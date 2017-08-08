@@ -20,6 +20,12 @@ public class CarService {
   // HTML FE -> controller (MVC, ...) (logic) -> service, HTTP, FILE -> Repository.
 
   @Transactional
+  public void save1(Car car1, Car car2) {
+    save(car1);
+    save(car2);
+  }
+
+  @Transactional
   public void save(Car car) {
     dao.save(car);
   }

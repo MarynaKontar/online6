@@ -14,6 +14,7 @@ public class MessageResource {
 
   @PostMapping
   @RequestMapping("/send")
+  // /messages/send
   public ResponseEntity<String> postMessage(String message) {
     System.out.println("Message is received: " + message);
     return ResponseEntity.ok("OK");

@@ -33,11 +33,11 @@ public class WebApplicationStarter implements ServletContainerInitializer {
     registration.setLoadOnStartup(1);
     registration.addMapping("/messages/send");
     // Now lets add filter for checking parameters.
-    //ctx.addFilter("paramsCheck", new ParamsCheckFilter())
-    //   .addMappingForUrlPatterns(null, true, "/messages/send");
+    ctx.addFilter("paramsCheck", new ParamsCheckFilter())
+       .addMappingForUrlPatterns(null, true, "/messages/send");
     // And add also BasicAuthFilter
-    //ctx.addFilter("basicAuth", new BasicAuthFilter())
-    //   .addMappingForUrlPatterns(null, false, "/*");
+    ctx.addFilter("basicAuth", new BasicAuthFilter())
+       .addMappingForUrlPatterns(null, false, "/*");
   }
 
   @SuppressWarnings("unchecked")

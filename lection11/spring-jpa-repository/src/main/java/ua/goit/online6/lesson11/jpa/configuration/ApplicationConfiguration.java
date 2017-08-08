@@ -23,11 +23,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"ua.goit.online6.lesson11.dao"})
+@ComponentScan(basePackages = {"ua.goit.online6.lesson11.jpa.dao"})
 @PropertySource("classpath:database.properties")
 // To enable JPA data support annotation @EnableJpaRepositories is used!
 // Parameters inside indicate packages where DAOs is located.
-@EnableJpaRepositories("ua.goit.online6.lesson11.dao")
+@EnableJpaRepositories("ua.goit.online6.lesson11.jpa.dao")
 public class ApplicationConfiguration {
 
 
@@ -75,8 +75,8 @@ public class ApplicationConfiguration {
     bean.setDataSource(dataSource);
     // Set to wrapper specific vendor properties.
     bean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
-    // Set packages where our JPA entyties are located.
-    bean.setPackagesToScan("ua.goit.online6.lesson11.entity");
+    // Set packages where our JPA entities are located.
+    bean.setPackagesToScan("ua.goit.online6.lesson11.jpa.entity");
     return bean;
   }
 

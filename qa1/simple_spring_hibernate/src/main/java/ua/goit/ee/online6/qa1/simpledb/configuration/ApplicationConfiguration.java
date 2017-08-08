@@ -26,7 +26,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:database.properties")
 public class ApplicationConfiguration {
 
-
   @Value("${db.url}")
   private String url;
 
