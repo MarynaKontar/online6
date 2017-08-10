@@ -13,6 +13,7 @@
     <modules>
         <module>qa1</module>
         <module>lection11</module>
+        <module>qa11</module>
     </modules>
 
     <properties>
@@ -21,10 +22,12 @@
         <hsql.version>2.4.0</hsql.version>
         <spring.version>4.3.10.RELEASE</spring.version>
         <spring.data.version>1.11.6.RELEASE</spring.data.version>
+        <spring.security.version>4.2.3.RELEASE</spring.security.version>
         <dbcp.version>1.4</dbcp.version>
         <slf4j.version>1.7.25</slf4j.version>
         <servlet.api.version>3.1.0</servlet.api.version>
         <servlet.jstl.version>1.2</servlet.jstl.version>
+        <jackson.version>2.9.0</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +73,16 @@
                 <version>${spring.data.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>commons-dbcp</groupId>
                 <artifactId>commons-dbcp</artifactId>
                 <version>${dbcp.version}</version>
@@ -93,6 +106,21 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
                 <version>${servlet.jstl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
