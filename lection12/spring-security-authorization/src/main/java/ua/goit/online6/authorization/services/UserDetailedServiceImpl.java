@@ -42,7 +42,7 @@ public class UserDetailedServiceImpl implements UserDetailsService {
     private User user;
     private Collection<SimpleGrantedAuthority> grantedAuthorities;
 
-    public UserDetailsExt(User user) {
+    UserDetailsExt(User user) {
       this.user = user;
       this.grantedAuthorities = new ArrayList<>();
       if (user.isAdministrator()) {
@@ -90,10 +90,6 @@ public class UserDetailedServiceImpl implements UserDetailsService {
 
     public String getEmail() {
       return user.getEmail();
-    }
-
-    public boolean isAdministrator() {
-      return user.isAdministrator();
     }
   }
 }

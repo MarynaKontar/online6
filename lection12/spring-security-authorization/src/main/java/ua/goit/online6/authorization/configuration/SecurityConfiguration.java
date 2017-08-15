@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @ComponentScan("ua.goit.online6.authorization.services")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-  // We will use BC password encoder and form login configuration.
+  // We will use BC password encoder and http basic configuration.
   // Configure this all by configure method.
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
@@ -31,6 +31,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                             .antMatchers("/user/**").hasRole("ADMIN")
                             .anyRequest().denyAll()
         .and()
-        .httpBasic();
+        .httpBasic()
+        .and()
+        .csrf().disable()
+    ;
   }
 }

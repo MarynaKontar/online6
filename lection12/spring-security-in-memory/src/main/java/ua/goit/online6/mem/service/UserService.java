@@ -17,7 +17,7 @@ public class UserService extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req,
                        HttpServletResponse resp) throws ServletException, IOException {
-    resp.getOutputStream().println("<p>Some list of users<p>");
+    resp.getOutputStream().println("<p>Some list of users</p>");
     resp.getOutputStream().flush();
   }
 }

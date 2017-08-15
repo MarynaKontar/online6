@@ -1,5 +1,6 @@
 package ua.goit.online6.mem.configuration;
 
+import java.security.AuthProvider;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -59,10 +63,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   //
   // We can change and implement our own AuthenticationProvider.
   // We can use encrypted password which matched hashes.
+  //
+  // password ~ '123456'
+  // hash = sha256(password) // sha256(123456)
+  // hash = sha256('xxxabc' + sha256('xxxabc' + password))
+  // salt = 'xxxabc'
+  //
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
+
+//  @Bean
+//  public AuthenticationProvider newProvider() {
+//     return new AuthenticationProvider() {
+//       @Override
+//       public Authentication authenticate(
+//           Authentication authentication) throws AuthenticationException {
+//         return null;
+//       }
+//
+//       @Override
+//       public boolean supports(Class<?> authentication) {
+//         return false;
+//       }
+//     };
+//  }
 
   private static class MapUserDetailedService implements UserDetailsService {
     private Map<String, UserDetails> users;
