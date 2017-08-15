@@ -4,3 +4,11 @@ CREATE TABLE cars (
   description VARCHAR(405) DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE TABLE users (
+  username      VARCHAR(50),
+  password      VARCHAR(405),
+  email         VARCHAR(405),
+  administrator BOOLEAN,
+  PRIMARY KEY (username)
+);

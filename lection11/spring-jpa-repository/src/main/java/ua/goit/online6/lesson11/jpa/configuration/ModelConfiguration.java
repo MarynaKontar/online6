@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 // To enable JPA data support annotation @EnableJpaRepositories is used!
 // Parameters inside indicate packages where DAOs is located.
 @EnableJpaRepositories("ua.goit.online6.lesson11.jpa.dao")
-public class ApplicationConfiguration {
+public class ModelConfiguration {
 
 
   @Value("${db.url}")

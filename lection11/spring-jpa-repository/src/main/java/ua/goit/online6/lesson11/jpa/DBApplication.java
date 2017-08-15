@@ -6,7 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ua.goit.online6.lesson11.jpa.configuration.ApplicationConfiguration;
+import ua.goit.online6.lesson11.jpa.configuration.ModelConfiguration;
 import ua.goit.online6.lesson11.jpa.dao.CarService;
 import ua.goit.online6.lesson11.jpa.entity.Car;
 
@@ -21,7 +21,7 @@ public class DBApplication {
     Logger logger = LoggerFactory.getLogger(DBApplication.class);
 
     try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-        ApplicationConfiguration.class)) {
+        ModelConfiguration.class)) {
       CarService service = context.getBean(CarService.class);
       logger.info("Staring car application!");
 
