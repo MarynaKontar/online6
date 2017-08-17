@@ -27,11 +27,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // Basic idea is next - create controller where:
     // 1. USER can check all users in the system.
     // 2. ADMIN can create, update or remove users.
-    http.authorizeRequests().antMatchers("/user/list").hasAnyRole("USER", "ADMIN")
+    http.authorizeRequests().antMatchers("/user/list", "/user/find/**")
+                                  .hasAnyRole("USER", "ADMIN")
                             .antMatchers("/user/**").hasRole("ADMIN")
+                            .antMatchers("/register").permitAll()
+                            .antMatchers("/jpeg/**").authenticated()
+                            .antMatchers("/css/**").authenticated()
+                            .antMatchers("/**").authenticated()
                             .anyRequest().denyAll()
         .and()
-        .httpBasic()
+        .formLogin()
         .and()
         .csrf().disable()
     ;

@@ -11,15 +11,22 @@
 
 <html>
 <head>
-    <title>List all users</title>
+    <title>Users list</title>
 </head>
 <body>
 <table>
     <c:forEach var="user" items="${users}">
         <tr>
-            <td>${user}</td>
+            <td>
+                <a href="/user/find/${user}">${user}</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
+
+<form action="/user/logout" method="post">
+    <input type="submit" value="logout">
+</form>
+
 </body>
 </html>

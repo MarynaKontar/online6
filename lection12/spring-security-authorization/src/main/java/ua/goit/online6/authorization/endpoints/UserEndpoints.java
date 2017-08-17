@@ -45,7 +45,13 @@ public class UserEndpoints {
     user.setUsername("admin");
     user.setPassword(passwordEncoder.encode("admin"));
     user.setAdministrator(true);
+    usersService.save(user);
 
+
+    user = new User();
+    user.setUsername("tolik");
+    user.setPassword(passwordEncoder.encode("tolik"));
+    user.setAdministrator(false);
     usersService.save(user);
   }
 

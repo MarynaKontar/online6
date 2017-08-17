@@ -1,5 +1,6 @@
 package ua.goit.ee.online6.qa11.entity;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class Car {
   private long id;
   private String name;
   private String description;
+  private BigDecimal price;
 
   public long getId() {
     return id;
@@ -47,6 +49,14 @@ public class Car {
   @Column(name = "description")
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
   }
 
   @Override

@@ -46,7 +46,7 @@ public class UserDetailedServiceImpl implements UserDetailsService {
       this.user = user;
       this.grantedAuthorities = new ArrayList<>();
       if (user.isAdministrator()) {
-        //ROLE_
+        //authority = ROLE_ + role
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
       } else {
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
