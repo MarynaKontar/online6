@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-security-authorization</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -103,5 +103,4 @@
             <artifactId>javax.el</artifactId>
         </dependency>
     </dependencies>
-
 </project>

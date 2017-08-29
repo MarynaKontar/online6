@@ -28,8 +28,8 @@ public class UsersService {
   }
 
   @Transactional(readOnly = true)
-  public User findOne(String s) {
-    return usersDao.findOne(s);
+  public User findOne(String name) {
+    return usersDao.findOne(name);
   }
 
   @Transactional

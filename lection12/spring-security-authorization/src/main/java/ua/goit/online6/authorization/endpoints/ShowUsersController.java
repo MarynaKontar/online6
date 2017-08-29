@@ -36,7 +36,7 @@ public class ShowUsersController {
   }
 
   // http://localhost:8080/find/admin
-  @RequestMapping(value = "/find/{login}/{id}")
+  @RequestMapping(value = "/find/{login}")
   public ModelAndView findUser(@PathVariable("login") String login) {
     ModelAndView modelAndView = new ModelAndView();
     //if (!bindingResult.hasErrors()) {
@@ -54,18 +54,6 @@ public class ShowUsersController {
   public String logout() {
     // http://localhost:8080/login?logout
     return "redirect:/login?logout";
-  }
-
-  @Component
-  public static class UserValidator implements Validator {
-    @Override
-    public boolean supports(Class<?> clazz) {
-      return true;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-    }
   }
 
 }
