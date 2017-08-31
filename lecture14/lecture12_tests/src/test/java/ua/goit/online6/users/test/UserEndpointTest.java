@@ -22,6 +22,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import ua.goit.online6.authorization.configuration.MvcConfiguration;
@@ -37,7 +38,9 @@ import ua.goit.online6.lesson11.jpa.entity.User;
  */
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {MvcConfiguration.class, SecurityConfiguration.class,
+@ContextConfiguration(classes = {
+    MvcConfiguration.class,
+    SecurityConfiguration.class,
     ApplicationTestModelConfiguration.class})
 public class UserEndpointTest {
 
@@ -55,18 +58,21 @@ public class UserEndpointTest {
   public void setUp() throws Exception {
     user = mock(User.class);
     when(user.getUsername()).thenReturn("A");
-    mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+    mvc = MockMvcBuilders
+        .webAppContextSetup(context)
+        .apply(springSecurity())
+        .build();
   }
 
   @Test
   public void testShowUsers() throws Exception {
     when(usersService.findAll()).thenReturn(Collections.singletonList(user));
 
-    mvc.perform(get("/user/show").with(user("test").roles("ADMIN"))).andExpect(status().isOk())
+    mvc.perform(get("/user/show").with(user("test").roles("ADMIN")))
+       .andExpect(MockMvcResultMatchers.status().isOk())
        .andExpect(model().attribute("users", equalTo(Collections.singletonList("A"))))
        .andExpect(view().name("users"));
   }
-
 
   @Test
   public void testShowUser() throws Exception {
