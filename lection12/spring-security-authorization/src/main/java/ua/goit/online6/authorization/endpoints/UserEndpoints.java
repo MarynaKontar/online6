@@ -73,18 +73,5 @@ public class UserEndpoints {
     user.setPassword(passwordEncoder.encode(password));
     user.setEmail(email);
     usersService.save(user);
-
-    throw new IOException("IO test");
   }
-
-  @ExceptionHandler(IOException.class)
-  public ResponseEntity<String> handleIOException(IOException ex) {
-    return ResponseEntity.status(HttpStatus.INSUFFICIENT_STORAGE).build();
-  }
-
-//  @ExceptionHandler(Exception.class)
-//  public ResponseEntity<String> handleException(Exception ex) {
-//    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//  }
-
 }
