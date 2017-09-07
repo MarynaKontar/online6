@@ -79,13 +79,15 @@ public class UserEndpointTest {
     when(usersService.findOne("A")).thenReturn(user);
 
     mvc.perform(get("/user/find/A").with(user("test").roles("ADMIN"))).andExpect(status().isOk())
-       .andExpect(model().attribute("user", user)).andExpect(view().name("user"));
+       .andExpect(model().attribute("user", user))
+       .andExpect(view().name("user"));
   }
 
   @Test
   public void logoutTest() throws Exception {
     mvc.perform(post("/logout").with(user("test").roles("ADMIN")))
-       .andExpect(redirectedUrl("/login?logout")).andExpect(status().isFound());
+       .andExpect(redirectedUrl("/login?logout"))
+       .andExpect(status().isFound());
   }
 
 }
